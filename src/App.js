@@ -1,10 +1,3 @@
-import {
-  AppBar,
-  CssBaseline,
-  Link as MaterialLink,
-  Toolbar,
-  Typography,
-} from "@mui/material";
 import React from "react";
 import { render } from "react-dom";
 import {
@@ -13,8 +6,15 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Details from "./components/Details";
-import Reults from "./components/Results";
+import {
+  AppBar,
+  CssBaseline,
+  Link as MaterialLink,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import WrappedDetails from "./components/Details";
+import Results from "./components/Results";
 
 const App = () => {
   return (
@@ -31,16 +31,16 @@ const App = () => {
           }}
         >
           <Toolbar>
-            <Typography variant="h6" color="inherit" noWrap>
-              <MaterialLink component={RouterLink} to="/">
+            <MaterialLink component={RouterLink} to="/" underline="none">
+              <Typography variant="h6" color="text.primary" noWrap>
                 Pokedex
-              </MaterialLink>
-            </Typography>
+              </Typography>
+            </MaterialLink>
           </Toolbar>
         </AppBar>
         <Routes>
-          <Route path="/details" element={<Details />} />
-          <Route path="/" element={<Reults />} />
+          <Route path="/details/:name" element={<WrappedDetails />} />
+          <Route path="/" element={<Results />} />
         </Routes>
       </BrowserRouter>
     </div>
